@@ -93,6 +93,6 @@ svm.save('doctor_classifier.pkl')
 ## Authors
 
 - [Raktim Maity](https://github.com/Raktimmaity)
-- [Risav Chatterjee](https://github.com/Raktimmaity)
-- [Pooja Maity](https://github.com/Raktimmaity)
+- [Risav Chatterjee](https://github.com/Risav2004Developer)
+- [Pooja Maity](https://github.com/pooja1621)
 
