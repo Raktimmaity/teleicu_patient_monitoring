@@ -14,6 +14,7 @@
 - FN(False Negative): Incorrectly predicted negative instances.
 - For measure accuracy of the model the formula is: accuracy = (TP + TN) / (TP + TN + FP + FN)
 
+
 ## Here are the step by step procedure
 Here, we perform step by step procedure
 
