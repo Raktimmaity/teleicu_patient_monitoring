@@ -1,0 +1,6 @@
+Stethoscope
+White_coat
+Glasses
+Cap
+Mask
+Coat

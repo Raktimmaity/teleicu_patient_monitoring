@@ -1,0 +1,63 @@
+import cv2
+import os
+
+def video_to_image_frames(video_path, output_dir, image_format='png'):
+    # Check if the video file exists
+    if not os.path.isfile(video_path):
+        print(f"Error: Video file {video_path} does not exist.")
+        return
+
+    # Open the video file
+    cap = cv2.VideoCapture(video_path)
+    
+    if not cap.isOpened():
+        print(f"Error: Could not open video file {video_path}.")
+        return
+
+    # Print video properties for debugging
+    frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+    frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    frame_count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    print(f"Video properties - Width: {frame_width}, Height: {frame_height}, Frame count: {frame_count}, FPS: {fps}")
+
+    # Create output directory if it does not exist
+    if not os.path.exists(output_dir):
+        try:
+            os.makedirs(output_dir)
+            print(f"Created directory: {output_dir}")
+        except OSError as e:
+            print(f"Error creating directory {output_dir}: {e}")
+            return
+
+    frame_count = 0
+    while True:
+        # Read a frame from the video
+        ret, frame = cap.read()
+        if not ret:
+            print("No more frames to read or error reading frame.")
+            break
+        
+        # Define the output file path
+        output_file = os.path.join(output_dir, f"frame_{frame_count:04d}.{image_format}")
+
+        # Write the frame as an image file
+        try:
+            cv2.imwrite(output_file, frame)
+            print(f"Saved frame {frame_count} to {output_file}")
+        except Exception as e:
+            print(f"Error saving frame {frame_count}: {e}")
+            break
+
+        frame_count += 1
+
+    # Release the video capture object
+    cap.release()
+    print("Finished converting video to image frames.")
+
+# Example usage
+video_path = 'input_video.mp4.mp4'  # Path to your input video file
+output_dir = 'image_frames'     # Directory where image frames will be saved
+image_format = 'png'            # Format of the saved image frames (e.g., 'png' or 'jpg')
+
+video_to_image_frames(video_path, output_dir, image_format)

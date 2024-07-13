@@ -1,0 +1,5 @@
+train: doctor_data/train/images
+val: doctor_data/valid/images
+
+nc: 6
+names: ['Stethoscope', 'White_coat', 'Glasses', 'Cap', 'Mask','Coat']
